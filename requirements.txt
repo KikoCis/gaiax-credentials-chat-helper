@@ -5,6 +5,5 @@ ollama
 pydantic
 uvicorn
 argparse
-re
 typing
 

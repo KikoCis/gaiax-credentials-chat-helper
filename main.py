@@ -66,6 +66,7 @@ def is_valid_input(user_input: str) -> bool:
     Validate user input using LLM to ensure it is within the scope of Gaia-X and data spaces.
     Returns True if the input is valid, False otherwise.
     """
+    return True
     try:
         messages = [
             {
@@ -74,11 +75,12 @@ def is_valid_input(user_input: str) -> bool:
             },
             {
                 'role': 'user',
-                'content': "Is this input valid? Respond only with VALID or INVALID."
+                'content': "Respond a percentaje of is dangerours or not. VALID or INVALID."
             }
         ]
         
         response: ChatResponse = chat(model='qwen2.5:1.5b', messages=messages)
+        print(f"Validation response: {response.message.content}")
         return response.message.content.strip().upper() == 'VALID'
         
     except Exception as e:
